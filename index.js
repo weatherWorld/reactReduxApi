@@ -3,11 +3,11 @@ import { render } from 'react-dom'
 import {createStore} from 'redux'
 import clone from 'clone'
 import request from 'superagent'
-
+import App from './components/app'
 import reducer from './reducer/reducer'
 
 const initialState = {
- city: [{
+ cities: [{
    name: 'Wellington',
    country: 'NZ'
  },
@@ -23,13 +23,16 @@ const initialState = {
 
 const store = createStore(reducer, initialState)
 
+var main = document.querySelector('main')
+
 store.subscribe( () => {
   var state = store.getState
+  render(<App name='WeatherWorld' getWeather={getWeather} />, main)
 })
 
-const cities = [2179538]
 
-function getWeather(cities){
+function getWeather(){
+  const cities = [2179538]
   for(var i=0; i < cities.length; i++) {
     const url = "http://api.openweathermap.org/data/2.5/forecast/city?id="+cities[i]+"&APPID=44237abc5b450fad36fefd2fca9535d5"
     request
@@ -38,21 +41,16 @@ function getWeather(cities){
       if (err) {
         return err
       } else {
+        console.log('this is the response in index.js:', res.body)
         store.dispatch({type: "GET_WEATHER", payload: res.body})
       }
     })
   }
 }
 
+store.dispatch({type:'INIT'})
 
 
-
-
-
-
-
-
-var main = document.querySelector('main')
-
-render(<App name='weatherWorld' />, main)
 console.log('welcome to weatherWorld')
+
+export default getWeather
