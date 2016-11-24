@@ -4,7 +4,7 @@ function reducer(state, action){
   const newState = clone(state)
 
   switch (action.type) {
-    case GET_WEATHER:
+    case 'GET_WEATHER':
       newState.cities = action.payload.cities
       return newState
 
@@ -13,3 +13,5 @@ function reducer(state, action){
 
   }
 }
+
+module.exports = reducer
