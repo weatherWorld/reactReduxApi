@@ -47,15 +47,8 @@ function getWeather(){
   }
 }
 
-<<<<<<< HEAD
-var main = document.querySelector('main')
-
-render(<App name='weatherWorld' />, main)
-=======
 store.dispatch({type:'INIT'})
 
-
->>>>>>> master
 console.log('welcome to weatherWorld')
 
 export default getWeather
