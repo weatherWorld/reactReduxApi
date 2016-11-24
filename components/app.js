@@ -1,10 +1,9 @@
 import React from 'react'
-import { render } from 'react-dom'
-import getWeather from ......
 
 const App = (props) =>
   <div>
-
-    <button onClick={getWeather(props)}>Get Weather</button>
-
+    <h1>{props.name}</h1>
+    <button onClick={props.getWeather}>Get Weather</button>
   </div>
+
+export default App
