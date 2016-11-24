@@ -7,7 +7,18 @@ import request from 'superagent'
 import reducer from '/reducer/reducer'
 
 const initialState = {
-
+  city: [{
+    name: 'Wellington',
+    country: 'NZ'
+  },
+  {
+    weather: {
+      temp: 288.94,
+      humidity: 98,
+      current weather: "light rain"
+    }
+  }
+  ]
 }
 
 const store = redux.createStore(reducer, state)
