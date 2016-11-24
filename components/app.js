@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-// import getWeather from ......
+import getWeather from '../index'
 
 const App = (props) =>
   <div>

@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import {createStore} from 'redux'
 import clone from 'clone'
 import request from 'superagent'
-
+import App from './components/app'
 import reducer from './reducer/reducer'
 
 const initialState = {
@@ -44,15 +44,9 @@ function getWeather(cities){
   }
 }
 
-
-
-
-
-
-
-
-
 var main = document.querySelector('main')
 
 render(<App name='weatherWorld' />, main)
 console.log('welcome to weatherWorld')
+
+export default getWeather
