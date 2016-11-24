@@ -12,7 +12,9 @@
     "deploy": "npm run build && npm run dist && npm run push"
   },
   "browserify": {
-    "transform": ["babelify"]
+    "transform": [
+      "babelify"
+    ]
   },
   "repository": {
     "type": "git",
@@ -31,9 +33,13 @@
     "babelify": "^7.2.0",
     "browserify": "^13.0.0",
     "budo": "^8.2.0",
+    "clone": "^2.1.0",
+    "deep-freeze": "0.0.1",
     "gh-pages": "^0.11.0",
-    "react": "^15.0.1", 
-    "react-dom": "^15.0.1", 
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "redux": "^3.6.0",
+    "superagent": "^3.0.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
     "uglifyify": "^3.0.1",
