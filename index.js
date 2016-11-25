@@ -39,6 +39,5 @@ function getWeather(){
 
 store.dispatch({type:'INIT'})
 
-console.log(store)
 
 export default getWeather
