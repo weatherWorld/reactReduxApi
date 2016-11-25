@@ -5,7 +5,7 @@ function reducer(state, action){
 
   switch (action.type) {
     case 'GET_WEATHER':
-      newState.cities = action.payload
+      newState.city = action.payload
       return newState
 
     default:
