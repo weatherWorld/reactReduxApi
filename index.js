@@ -7,18 +7,22 @@ import App from './components/app'
 import reducer from './reducer/reducer'
 
 const initialState = {
- cities: [{
+ city: [{
    name: 'Wellington',
-   country: 'NZ'
+   temp: 27,
+   description: 'light rain'
  },
  {
-   weather: {
-     temp: 288.94,
-     humidity: 98,
-     currentWeather: "light rain"
-   }
+   name: 'Christchurch',
+   temp: 24,
+   description: 'sunny'
+ },
+ {
+   name: 'Auckland',
+   temp: 12,
+   description: 'snow'
  }
- ]
+]
 }
 
 const store = createStore(reducer, initialState)
@@ -26,8 +30,8 @@ const store = createStore(reducer, initialState)
 var main = document.querySelector('main')
 
 store.subscribe( () => {
-  var state = store.getState
-  render(<App name='WeatherWorld' getWeather={getWeather} />, main)
+  var state = store.getState()
+  render(<App name='WeatherWorld' getWeather={getWeather} state={state} />, main)
 })
 
 function getWeather(){
@@ -40,7 +44,6 @@ function getWeather(){
       if (err) {
         return err
       } else {
-        console.log('this is the response in index.js:', res.body)
         store.dispatch({type: "GET_WEATHER", payload: res.body})
       }
     })
