@@ -13,8 +13,8 @@ const store = createStore(reducer, initialState)
 var main = document.querySelector('main')
 
 store.subscribe( () => {
-  var state = store.getState
-  render(<App name='WeatherWorld' getWeather={getWeather} />, main)
+  var state = store.getState()
+  render(<App name='WeatherWorld' getWeather={getWeather} state={state} />, main)
 })
 
 function getWeather(){
