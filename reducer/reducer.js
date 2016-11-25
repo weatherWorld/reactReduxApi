@@ -13,8 +13,6 @@ function reducer(state, action){
       console.log("new state from 'GOT_WEATHER' reducer", newState)
       return newState
 
-    case 'FILTER_BY_CITY':
-
     default:
       return newState
 
