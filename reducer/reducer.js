@@ -1,12 +1,19 @@
-import clone from 'clone'
+// import clone from 'clone'
+const clone = require ('clone')
 
 function reducer(state, action){
-  const newState = clone(state)
+  let newState = clone(state)
 
   switch (action.type) {
-    case 'GET_WEATHER':
-      newState.cities = action.payload
+    case 'INIT':
       return newState
+
+    case 'GOT_WEATHER':
+      newState.city = action.payload
+      console.log("new state from 'GOT_WEATHER' reducer", newState)
+      return newState
+
+    case 'FILTER_BY_CITY':
 
     default:
       return newState
@@ -14,4 +21,4 @@ function reducer(state, action){
   }
 }
 
-export default reducer
+module.exports = reducer

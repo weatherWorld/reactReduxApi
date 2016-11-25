@@ -1,0 +1,3 @@
+function filterWeather(state) {
+
+}
