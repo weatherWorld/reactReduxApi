@@ -7,7 +7,22 @@ import App from './components/app'
 import reducer from './reducer/reducer'
 
 const initialState = {
- city: {}
+ city: [{
+   name: 'Wellington',
+   temp: 27,
+   description: 'light rain'
+ },
+ {
+   name: 'Christchurch',
+   temp: 24,
+   description: 'sunny'
+ },
+ {
+   name: 'Auckland',
+   temp: 12,
+   description: 'snow'
+ }
+]
 }
 
 const store = createStore(reducer, initialState)
@@ -31,7 +46,6 @@ function getWeather(){
         return err
       } else {
         store.dispatch({type: "GET_WEATHER", payload: res.body})
-        console.log(res.body)
       }
     })
   }
