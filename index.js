@@ -4,26 +4,9 @@ import {createStore} from 'redux'
 import clone from 'clone'
 import request from 'superagent'
 import App from './components/app'
-import reducer from './reducer/reducer'
+const reducer = require ('./reducer/reducer')
 
-const initialState = {
- city: [{
-   name: 'Wellington',
-   temp: 27,
-   description: 'light rain'
- },
- {
-   name: 'Christchurch',
-   temp: 24,
-   description: 'sunny'
- },
- {
-   name: 'Auckland',
-   temp: 12,
-   description: 'snow'
- }
-]
-}
+const initialState = {}
 
 const store = createStore(reducer, initialState)
 
@@ -44,7 +27,11 @@ function getWeather(){
       if (err) {
         return err
       } else {
-        store.dispatch({type: "GET_WEATHER", payload: res.body})
+        var name = res.body.city.name
+        var temp = res.body.list[i].main.temp
+        var description = res.body.list[i].weather[0].description
+        console.log('LOOK HERE', name, temp, description)
+        store.dispatch({type: "GOT_WEATHER", payload: {name, temp, description}})
       }
     })
   }
@@ -52,6 +39,5 @@ function getWeather(){
 
 store.dispatch({type:'INIT'})
 
-console.log('welcome to weatherWorld')
 
 export default getWeather
